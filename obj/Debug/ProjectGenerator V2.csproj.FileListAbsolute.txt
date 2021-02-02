@@ -1,0 +1,14 @@
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\ProjectGenerator V2.exe.config
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\ProjectGenerator V2.exe
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\ProjectGenerator V2.pdb
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\DarkUI.dll
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\YamlDotNet.dll
+C:\Users\josti\source\repos\ProjectGenerator V2\bin\Debug\YamlDotNet.xml
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.csprojAssemblyReference.cache
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator_V2.Form1.resources
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator_V2.Properties.Resources.resources
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.csproj.GenerateResource.cache
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.csproj.CoreCompileInputs.cache
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.csproj.CopyComplete
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.exe
+C:\Users\josti\source\repos\ProjectGenerator V2\obj\Debug\ProjectGenerator V2.pdb
