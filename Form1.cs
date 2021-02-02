@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -95,11 +96,51 @@ namespace ProjectGenerator_V2
 
 		private void generateProj_Click(object sender, EventArgs e)
 		{
-			folderPath = pathBox.Text;
-			createFolders();
-			createAndWriteFiles();
-		}
+			StreamReader reader = new StreamReader("./gen.yml");
+			string genFileStr = reader.ReadToEnd();
+			var deserializer = new DeserializerBuilder().Build();
+			var obj = deserializer.Deserialize<dynamic>(genFileStr);
+			int selectedLang = langSelect.SelectedIndex;
 
+			folderPath = pathBox.Text;
+			if (folderPath == "")
+			{
+				try
+				{
+					using (FolderBrowserDialog fb = new FolderBrowserDialog())
+					{
+						DialogResult result = fb.ShowDialog();
+						if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fb.SelectedPath))
+						{
+							pathBox.Text = fb.SelectedPath;
+						}
+					}
+					createFolders();
+					createAndWriteFiles();
+					if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+					{
+						openFolderIn(folderPath);
+					}
+				}
+				catch (Exception err)
+				{
+					MessageBox.Show("No Folder Selected");
+				}
+			}
+			else
+			{
+				createFolders();
+				createAndWriteFiles();
+				if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+				{
+					openFolderIn(folderPath);
+				}
+			}
+		}
+		private void openFolderIn(String path)
+		{
+			Process.Start(path);
+		}
 		private void langSelect_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			StreamReader reader = new StreamReader("./gen.yml");
@@ -123,6 +164,11 @@ namespace ProjectGenerator_V2
 			{
 				openExpCB.Checked = true;
 			}
+		}
+
+		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Version 0.3");
 		}
 	}
 }

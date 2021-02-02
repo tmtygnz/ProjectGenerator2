@@ -112,8 +112,8 @@ namespace ProjectGenerator_V2
 			this.generatorPreferencesToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
 			this.generatorPreferencesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
 			this.generatorPreferencesToolStripMenuItem.Name = "generatorPreferencesToolStripMenuItem";
-			this.generatorPreferencesToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-			this.generatorPreferencesToolStripMenuItem.Text = "Generator Preferences";
+			this.generatorPreferencesToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+			this.generatorPreferencesToolStripMenuItem.Text = "Edit Generator Preferences";
 			// 
 			// exitToolStripMenuItem
 			// 
@@ -168,8 +168,9 @@ namespace ProjectGenerator_V2
 			this.versionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
 			this.versionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
 			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-			this.versionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.versionToolStripMenuItem.Text = "Version";
+			this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
 			// 
 			// openCmdCB
 			// 
