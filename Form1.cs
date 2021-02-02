@@ -186,7 +186,7 @@ namespace ProjectGenerator_V2
 
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Version 0.3");
+			MessageBox.Show("Version 0.7");
 		}
 
 		private void generatorPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
