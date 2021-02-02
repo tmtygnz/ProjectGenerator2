@@ -29,7 +29,6 @@ namespace ProjectGenerator_V2
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.darkDropdownList1 = new DarkUI.Controls.DarkDropdownList();
 			this.pathBox = new System.Windows.Forms.TextBox();
 			this.selectPathBtn = new DarkUI.Controls.DarkButton();
 			this.langText = new DarkUI.Controls.DarkLabel();
@@ -37,27 +36,17 @@ namespace ProjectGenerator_V2
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.generatorPreferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.packagesUsedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.darkUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.yamlDotNetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openCmdCB = new System.Windows.Forms.CheckBox();
 			this.openExpCB = new System.Windows.Forms.CheckBox();
 			this.generateProj = new DarkUI.Controls.DarkButton();
-			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.packagesUsedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.darkUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.yamlDotNetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.langSelect = new DarkUI.Controls.DarkComboBox();
 			this.darkMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// darkDropdownList1
-			// 
-			this.darkDropdownList1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.darkDropdownList1.Location = new System.Drawing.Point(10, 72);
-			this.darkDropdownList1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-			this.darkDropdownList1.Name = "darkDropdownList1";
-			this.darkDropdownList1.Size = new System.Drawing.Size(198, 34);
-			this.darkDropdownList1.TabIndex = 0;
-			this.darkDropdownList1.Text = "darkDropdownList1";
 			// 
 			// pathBox
 			// 
@@ -134,6 +123,54 @@ namespace ProjectGenerator_V2
 			this.exitToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			// 
+			// aboutToolStripMenuItem
+			// 
+			this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+			this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.packagesUsedToolStripMenuItem,
+            this.versionToolStripMenuItem});
+			this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 19);
+			this.aboutToolStripMenuItem.Text = "About";
+			// 
+			// packagesUsedToolStripMenuItem
+			// 
+			this.packagesUsedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+			this.packagesUsedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.darkUIToolStripMenuItem,
+            this.yamlDotNetToolStripMenuItem});
+			this.packagesUsedToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+			this.packagesUsedToolStripMenuItem.Name = "packagesUsedToolStripMenuItem";
+			this.packagesUsedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.packagesUsedToolStripMenuItem.Text = "Packages Used";
+			// 
+			// darkUIToolStripMenuItem
+			// 
+			this.darkUIToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+			this.darkUIToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+			this.darkUIToolStripMenuItem.Name = "darkUIToolStripMenuItem";
+			this.darkUIToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.darkUIToolStripMenuItem.Text = "Dark UI";
+			this.darkUIToolStripMenuItem.Click += new System.EventHandler(this.darkUIToolStripMenuItem_Click);
+			// 
+			// yamlDotNetToolStripMenuItem
+			// 
+			this.yamlDotNetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+			this.yamlDotNetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+			this.yamlDotNetToolStripMenuItem.Name = "yamlDotNetToolStripMenuItem";
+			this.yamlDotNetToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+			this.yamlDotNetToolStripMenuItem.Text = "YamlDotNet";
+			this.yamlDotNetToolStripMenuItem.Click += new System.EventHandler(this.yamlDotNetToolStripMenuItem_Click);
+			// 
+			// versionToolStripMenuItem
+			// 
+			this.versionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+			this.versionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
+			this.versionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.versionToolStripMenuItem.Text = "Version";
+			// 
 			// openCmdCB
 			// 
 			this.openCmdCB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -174,54 +211,17 @@ namespace ProjectGenerator_V2
 			this.generateProj.Size = new System.Drawing.Size(173, 53);
 			this.generateProj.TabIndex = 7;
 			this.generateProj.Text = "Generate Project";
+			this.generateProj.Click += new System.EventHandler(this.generateProj_Click);
 			// 
-			// aboutToolStripMenuItem
+			// langSelect
 			// 
-			this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-			this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.packagesUsedToolStripMenuItem,
-            this.versionToolStripMenuItem});
-			this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 19);
-			this.aboutToolStripMenuItem.Text = "About";
-			// 
-			// packagesUsedToolStripMenuItem
-			// 
-			this.packagesUsedToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-			this.packagesUsedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.darkUIToolStripMenuItem,
-            this.yamlDotNetToolStripMenuItem});
-			this.packagesUsedToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.packagesUsedToolStripMenuItem.Name = "packagesUsedToolStripMenuItem";
-			this.packagesUsedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.packagesUsedToolStripMenuItem.Text = "Packages Used";
-			// 
-			// versionToolStripMenuItem
-			// 
-			this.versionToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-			this.versionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
-			this.versionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.versionToolStripMenuItem.Text = "Version";
-			// 
-			// darkUIToolStripMenuItem
-			// 
-			this.darkUIToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-			this.darkUIToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.darkUIToolStripMenuItem.Name = "darkUIToolStripMenuItem";
-			this.darkUIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.darkUIToolStripMenuItem.Text = "Dark UI";
-			this.darkUIToolStripMenuItem.Click += new System.EventHandler(this.darkUIToolStripMenuItem_Click);
-			// 
-			// yamlDotNetToolStripMenuItem
-			// 
-			this.yamlDotNetToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-			this.yamlDotNetToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-			this.yamlDotNetToolStripMenuItem.Name = "yamlDotNetToolStripMenuItem";
-			this.yamlDotNetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.yamlDotNetToolStripMenuItem.Text = "YamlDotNet";
-			this.yamlDotNetToolStripMenuItem.Click += new System.EventHandler(this.yamlDotNetToolStripMenuItem_Click);
+			this.langSelect.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+			this.langSelect.FormattingEnabled = true;
+			this.langSelect.Location = new System.Drawing.Point(12, 75);
+			this.langSelect.Name = "langSelect";
+			this.langSelect.Size = new System.Drawing.Size(196, 26);
+			this.langSelect.TabIndex = 8;
+			this.langSelect.SelectedIndexChanged += new System.EventHandler(this.langSelect_SelectedIndexChanged);
 			// 
 			// Form1
 			// 
@@ -229,13 +229,13 @@ namespace ProjectGenerator_V2
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
 			this.ClientSize = new System.Drawing.Size(317, 175);
+			this.Controls.Add(this.langSelect);
 			this.Controls.Add(this.generateProj);
 			this.Controls.Add(this.openExpCB);
 			this.Controls.Add(this.openCmdCB);
 			this.Controls.Add(this.langText);
 			this.Controls.Add(this.selectPathBtn);
 			this.Controls.Add(this.pathBox);
-			this.Controls.Add(this.darkDropdownList1);
 			this.Controls.Add(this.darkMenuStrip1);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MainMenuStrip = this.darkMenuStrip1;
@@ -244,6 +244,7 @@ namespace ProjectGenerator_V2
 			this.MinimumSize = new System.Drawing.Size(333, 214);
 			this.Name = "Form1";
 			this.Text = "Form1";
+			this.Load += new System.EventHandler(this.Form1_Load);
 			this.darkMenuStrip1.ResumeLayout(false);
 			this.darkMenuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -252,8 +253,6 @@ namespace ProjectGenerator_V2
 		}
 
 		#endregion
-
-		private DarkUI.Controls.DarkDropdownList darkDropdownList1;
 		private System.Windows.Forms.TextBox pathBox;
 		private DarkUI.Controls.DarkButton selectPathBtn;
 		private DarkUI.Controls.DarkLabel langText;
@@ -269,6 +268,7 @@ namespace ProjectGenerator_V2
 		private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem darkUIToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem yamlDotNetToolStripMenuItem;
+		private DarkUI.Controls.DarkComboBox langSelect;
 	}
 }
 
