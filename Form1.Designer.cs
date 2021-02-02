@@ -136,6 +136,8 @@ namespace ProjectGenerator_V2
 			// 
 			// openCmdCB
 			// 
+			this.openCmdCB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.openCmdCB.AutoSize = true;
 			this.openCmdCB.ForeColor = System.Drawing.Color.White;
 			this.openCmdCB.Location = new System.Drawing.Point(14, 114);
@@ -148,6 +150,8 @@ namespace ProjectGenerator_V2
 			// 
 			// openExpCB
 			// 
+			this.openExpCB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.openExpCB.AutoSize = true;
 			this.openExpCB.ForeColor = System.Drawing.Color.White;
 			this.openExpCB.Location = new System.Drawing.Point(14, 143);
@@ -160,7 +164,8 @@ namespace ProjectGenerator_V2
 			// 
 			// generateProj
 			// 
-			this.generateProj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.generateProj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.generateProj.Location = new System.Drawing.Point(132, 111);
 			this.generateProj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -235,6 +240,7 @@ namespace ProjectGenerator_V2
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.MainMenuStrip = this.darkMenuStrip1;
 			this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+			this.MaximumSize = new System.Drawing.Size(449, 348);
 			this.MinimumSize = new System.Drawing.Size(333, 214);
 			this.Name = "Form1";
 			this.Text = "Form1";
