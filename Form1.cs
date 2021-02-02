@@ -17,6 +17,7 @@ namespace ProjectGenerator_V2
 	public partial class Form1 : Form
 	{
 		string folderPath = @"";
+		string configPath = "./.config/config.yml";
 		public Form1()
 		{
 			InitializeComponent();
@@ -36,7 +37,6 @@ namespace ProjectGenerator_V2
 
 		private void darkUIToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			refreshDropDown();
 			System.Diagnostics.Process.Start("https://github.com/RobinPerris/DarkUI");
 		}
 
@@ -46,7 +46,7 @@ namespace ProjectGenerator_V2
 		}
 		private void refreshDropDown()
 		{
-			StreamReader reader = new StreamReader("./gen.yml");
+			StreamReader reader = new StreamReader(configPath);
 			string genFileStr = reader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			var obj = deserializer.Deserialize<dynamic>(genFileStr);
@@ -58,7 +58,7 @@ namespace ProjectGenerator_V2
 		}
 		private void createFolders()
 		{
-			StreamReader reader = new StreamReader("./gen.yml");
+			StreamReader reader = new StreamReader(configPath);
 			string genFileStr = reader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			var obj = deserializer.Deserialize<dynamic>(genFileStr);
@@ -71,7 +71,7 @@ namespace ProjectGenerator_V2
 		}
 		private void createAndWriteFiles()
 		{
-			StreamReader reader = new StreamReader("./gen.yml");
+			StreamReader reader = new StreamReader(configPath);
 			string genFileStr = reader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			var obj = deserializer.Deserialize<dynamic>(genFileStr);
@@ -96,7 +96,7 @@ namespace ProjectGenerator_V2
 
 		private void generateProj_Click(object sender, EventArgs e)
 		{
-			StreamReader reader = new StreamReader("./gen.yml");
+			StreamReader reader = new StreamReader(configPath);
 			string genFileStr = reader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			var obj = deserializer.Deserialize<dynamic>(genFileStr);
@@ -161,7 +161,7 @@ namespace ProjectGenerator_V2
 		}
 		private void langSelect_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			StreamReader reader = new StreamReader("./gen.yml");
+			StreamReader reader = new StreamReader(configPath);
 			string genFileStr = reader.ReadToEnd();
 			var deserializer = new DeserializerBuilder().Build();
 			var obj = deserializer.Deserialize<dynamic>(genFileStr);
@@ -187,6 +187,11 @@ namespace ProjectGenerator_V2
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Version 0.3");
+		}
+
+		private void generatorPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Process.Start(Application.StartupPath + "\\.config");
 		}
 	}
 }
