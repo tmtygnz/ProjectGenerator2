@@ -117,9 +117,14 @@ namespace ProjectGenerator_V2
 					}
 					createFolders();
 					createAndWriteFiles();
+					openTerminalIn(folderPath);
 					if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
 					{
 						openFolderIn(folderPath);
+					}
+					if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+					{
+						openTerminalIn(folderPath);
 					}
 				}
 				catch (Exception err)
@@ -135,11 +140,24 @@ namespace ProjectGenerator_V2
 				{
 					openFolderIn(folderPath);
 				}
+				if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+				{
+					openTerminalIn(folderPath);
+				}
 			}
 		}
-		private void openFolderIn(String path)
+		private void openFolderIn(string path)
 		{
 			Process.Start(path);
+		}
+		private void openTerminalIn(string path)
+		{
+			Process proc = new Process();
+			ProcessStartInfo startInfo = new ProcessStartInfo();
+			startInfo.WorkingDirectory = path;
+			startInfo.FileName = "cmd.exe";
+			proc.StartInfo = startInfo;
+			proc.Start();
 		}
 		private void langSelect_SelectedIndexChanged(object sender, EventArgs e)
 		{
