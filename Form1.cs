@@ -92,6 +92,7 @@ namespace ProjectGenerator_V2
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			refreshDropDown();
+			langSelect.SelectedIndex = 0;
 		}
 
 		private void generateProj_Click(object sender, EventArgs e)
@@ -186,7 +187,7 @@ namespace ProjectGenerator_V2
 
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Version 0.7");
+			MessageBox.Show("Version 1");
 		}
 
 		private void generatorPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
