@@ -1,9 +1,7 @@
 # Project Generator 2
----
 This is a customizable project generator created using C#
 
 ## Installation
----
 Go to the releases page of this repository or click [here](https://github.com/jostimian/ProjectGenerator2/releases/tag/v1.0)
 
 ## Usage
