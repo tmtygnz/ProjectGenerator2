@@ -119,11 +119,11 @@ namespace ProjectGenerator_V2
 					createFolders();
 					createAndWriteFiles();
 					openTerminalIn(folderPath);
-					if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+					if (openExpCB.Checked == true)
 					{
 						openFolderIn(folderPath);
 					}
-					if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+					if (openCmdCB.Checked == true)
 					{
 						openTerminalIn(folderPath);
 					}
@@ -137,11 +137,11 @@ namespace ProjectGenerator_V2
 			{
 				createFolders();
 				createAndWriteFiles();
-				if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+				if (openExpCB.Checked == true)
 				{
 					openFolderIn(folderPath);
 				}
-				if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+				if (openCmdCB.Checked == true)
 				{
 					openTerminalIn(folderPath);
 				}
