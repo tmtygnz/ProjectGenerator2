@@ -26,6 +26,6 @@ Extract the compressed file and run the executable
 | files        	| arrays     	| Arrays of files to be created                                                                                        	|
 | filePath     	| string     	| Path where the file will be created                                                                                  	|
 | fileName     	| string     	| Name of the file                                                                                                     	|
-| fileContent  	| string     	| Code or content of the file                                                                                          	|
+| fileContent  	| string     	| Code or content of the file                                                                                   	|
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

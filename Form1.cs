@@ -25,13 +25,20 @@ namespace ProjectGenerator_V2
 
 		private void selectPathBtn_Click(object sender, EventArgs e)
 		{
-			using (FolderBrowserDialog fb = new FolderBrowserDialog())
+			try
 			{
-				DialogResult result = fb.ShowDialog();
-				if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fb.SelectedPath))
+				using (FolderBrowserDialog fb = new FolderBrowserDialog())
 				{
-					pathBox.Text = fb.SelectedPath;
+					DialogResult result = fb.ShowDialog();
+					if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fb.SelectedPath))
+					{
+						pathBox.Text = fb.SelectedPath;
+					}
 				}
+			}
+			catch
+			{
+				MessageBox.Show("Cant select folder");
 			}
 		}
 
@@ -46,46 +53,67 @@ namespace ProjectGenerator_V2
 		}
 		private void refreshDropDown()
 		{
-			StreamReader reader = new StreamReader(configPath);
-			string genFileStr = reader.ReadToEnd();
-			var deserializer = new DeserializerBuilder().Build();
-			var obj = deserializer.Deserialize<dynamic>(genFileStr);
-			for (int i = 0; i != obj["languages"].Count; i++)
+			try
 			{
-				langSelect.Items.Add(obj["languages"][i]["langName"]);
+				StreamReader reader = new StreamReader(configPath);
+				string genFileStr = reader.ReadToEnd();
+				var deserializer = new DeserializerBuilder().Build();
+				var obj = deserializer.Deserialize<dynamic>(genFileStr);
+				for (int i = 0; i != obj["languages"].Count; i++)
+				{
+					langSelect.Items.Add(obj["languages"][i]["langName"]);
+				}
+				reader.Close();
 			}
-			reader.Close();
+			catch
+			{
+				MessageBox.Show("Cant show template in drop down");
+			}
 		}
 		private void createFolders()
 		{
-			StreamReader reader = new StreamReader(configPath);
-			string genFileStr = reader.ReadToEnd();
-			var deserializer = new DeserializerBuilder().Build();
-			var obj = deserializer.Deserialize<dynamic>(genFileStr);
-			int selectedLang = langSelect.SelectedIndex;
-			for(int i = 0; i != obj["languages"][selectedLang]["folders"].Count; i++)
+			try
 			{
-				Directory.CreateDirectory(folderPath + "/" + obj["languages"][selectedLang]["folders"][i]["folderName"]);
+				StreamReader reader = new StreamReader(configPath);
+				string genFileStr = reader.ReadToEnd();
+				var deserializer = new DeserializerBuilder().Build();
+				var obj = deserializer.Deserialize<dynamic>(genFileStr);
+				int selectedLang = langSelect.SelectedIndex;
+				for (int i = 0; i != obj["languages"][selectedLang]["folders"].Count; i++)
+				{
+					Directory.CreateDirectory(folderPath + "/" + obj["languages"][selectedLang]["folders"][i]["folderName"]);
+				}
+				reader.Close();
 			}
-			reader.Close();
+			catch
+			{
+				MessageBox.Show("Cant create folder");
+			}
 		}
 		private void createAndWriteFiles()
 		{
-			StreamReader reader = new StreamReader(configPath);
-			string genFileStr = reader.ReadToEnd();
-			var deserializer = new DeserializerBuilder().Build();
-			var obj = deserializer.Deserialize<dynamic>(genFileStr);
-			int selectedLang = langSelect.SelectedIndex;
-			for(int i = 0; i != obj["languages"][selectedLang]["files"].Count; i++)
+			try
 			{
-				string fileDestination = folderPath + "/" + obj["languages"][selectedLang]["files"][i]["filePath"]+
-					"/" + obj["languages"][selectedLang]["files"][i]["fileName"];
-				FileStream fs = File.Create(fileDestination);
-				fs.Close();
-				StreamWriter writer = new StreamWriter(fileDestination);
-				writer.Write(obj["languages"][selectedLang]["files"][i]["fileContent"]);
-				writer.Flush();
-				writer.Close();
+				StreamReader reader = new StreamReader(configPath);
+				string genFileStr = reader.ReadToEnd();
+				var deserializer = new DeserializerBuilder().Build();
+				var obj = deserializer.Deserialize<dynamic>(genFileStr);
+				int selectedLang = langSelect.SelectedIndex;
+				for (int i = 0; i != obj["languages"][selectedLang]["files"].Count; i++)
+				{
+					string fileDestination = folderPath + "/" + obj["languages"][selectedLang]["files"][i]["filePath"] +
+						"/" + obj["languages"][selectedLang]["files"][i]["fileName"];
+					FileStream fs = File.Create(fileDestination);
+					fs.Close();
+					StreamWriter writer = new StreamWriter(fileDestination);
+					writer.Write(obj["languages"][selectedLang]["files"][i]["fileContent"]);
+					writer.Flush();
+					writer.Close();
+				}
+			}
+			catch
+			{
+				MessageBox.Show("Cant create file");
 			}
 		}
 
@@ -149,39 +177,61 @@ namespace ProjectGenerator_V2
 		}
 		private void openFolderIn(string path)
 		{
-			Process.Start(path);
+			try
+			{
+				Process.Start(path);
+			}
+			catch
+			{
+				MessageBox.Show("Cant open folder");
+			}
 		}
 		private void openTerminalIn(string path)
 		{
-			Process proc = new Process();
-			ProcessStartInfo startInfo = new ProcessStartInfo();
-			startInfo.WorkingDirectory = path;
-			startInfo.FileName = "cmd.exe";
-			proc.StartInfo = startInfo;
-			proc.Start();
+			try
+			{
+				const string strCmdText = "/C ipconfig&ipconfig";
+				Process proc = new Process();
+				ProcessStartInfo startInfo = new ProcessStartInfo();
+				startInfo.WorkingDirectory = path;
+				startInfo.FileName = "cmd.exe";
+				proc.StartInfo = startInfo;
+				proc.Start();
+			}
+			catch
+			{
+				MessageBox.Show("Cant Open Terminal");
+			}
 		}
 		private void langSelect_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			StreamReader reader = new StreamReader(configPath);
-			string genFileStr = reader.ReadToEnd();
-			var deserializer = new DeserializerBuilder().Build();
-			var obj = deserializer.Deserialize<dynamic>(genFileStr);
-			int selectedLang = langSelect.SelectedIndex;
-			if(Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 0)
+			try
 			{
-				openCmdCB.Checked = false;
+				StreamReader reader = new StreamReader(configPath);
+				string genFileStr = reader.ReadToEnd();
+				var deserializer = new DeserializerBuilder().Build();
+				var obj = deserializer.Deserialize<dynamic>(genFileStr);
+				int selectedLang = langSelect.SelectedIndex;
+				if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 0)
+				{
+					openCmdCB.Checked = false;
+				}
+				if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+				{
+					openCmdCB.Checked = true;
+				}
+				if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 0)
+				{
+					openExpCB.Checked = false;
+				}
+				if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+				{
+					openExpCB.Checked = true;
+				}
 			}
-			if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+			catch
 			{
-				openCmdCB.Checked = true;
-			}
-			if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 0)
-			{
-				openExpCB.Checked = false;
-			}
-			if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
-			{
-				openExpCB.Checked = true;
+				MessageBox.Show("Cant Update Dropdown");
 			}
 		}
 
@@ -192,7 +242,19 @@ namespace ProjectGenerator_V2
 
 		private void generatorPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Process.Start(Application.StartupPath + "\\.config");
+			try
+			{
+				Process.Start(Application.StartupPath + "\\.config");
+			}
+			catch
+			{
+				MessageBox.Show("Cant Open Folder");
+			}
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }
