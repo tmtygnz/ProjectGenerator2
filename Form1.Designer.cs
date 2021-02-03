@@ -245,7 +245,7 @@ namespace ProjectGenerator_V2
 			this.MaximumSize = new System.Drawing.Size(449, 348);
 			this.MinimumSize = new System.Drawing.Size(333, 214);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "Project Generator";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.darkMenuStrip1.ResumeLayout(false);
 			this.darkMenuStrip1.PerformLayout();
