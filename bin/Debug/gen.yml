@@ -1,0 +1,43 @@
+title: "Generator Preferences"
+languages:
+  -
+    langName: "Python" #Language Name
+
+    openTerminal: 1 # 1 = true, 0 = false
+    openExplorer: 1 # 1 = true, 0 = false
+
+    folders: #arrays of folders
+    - 
+      folderName: "src" #folder name
+    - 
+      folderName: "bin"
+    -
+      folderName: "lib"
+
+    files: #array of files
+    -
+      filePath: "src" # file path to create the file
+      fileName: "main.py" #file name with file extension
+      fileContent: | #file content
+        """Pregenerated Python File"""
+        print("Hello World")
+
+  -
+    langName: "C++"
+    openTerminal: 0 # 1 = true, 0 = false
+    openExplorer: 1 # 1 = true, 0 = false
+    folders:
+    - 
+      folderName: "src"
+    - 
+      folderName: "bin"
+    -
+      folderName: "lib"
+    -
+      folderName: "include"
+
+    files: 
+    -
+      filePath: "src"
+      fileName: "main.cpp"
+      fileContent: ""
