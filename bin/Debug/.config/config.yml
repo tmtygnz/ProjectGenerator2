@@ -3,6 +3,7 @@ languages:
   -
     langName: "Python" #Language Name
 
+    pushToGit: 1
     openTerminal: 0 # 1 = true, 0 = false
     openExplorer: 0 # 1 = true, 0 = false
 
@@ -24,6 +25,7 @@ languages:
 
   -
     langName: "C++"
+    pushToGit: 1
     openTerminal: 0 # 1 = true, 0 = false
     openExplorer: 1 # 1 = true, 0 = false
     folders:

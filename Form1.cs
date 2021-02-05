@@ -110,6 +110,7 @@ namespace ProjectGenerator_V2
 					writer.Flush();
 					writer.Close();
 				}
+				reader.Close();
 			}
 			catch
 			{
@@ -143,7 +144,17 @@ namespace ProjectGenerator_V2
 			{
 				openExpCB.Checked = true;
 			}
-			
+			if (Int64.Parse(obj["languages"][selectedLang]["pushToGit"]) == 0)
+			{
+				gitUrlBar.Enabled = false;
+				pushToGitCB.Checked = false;
+			}
+			if (Int64.Parse(obj["languages"][selectedLang]["pushToGit"]) == 1)
+			{
+				gitUrlBar.Enabled = true;
+				pushToGitCB.Checked = true;
+			}
+			reader.Close();
 		}
 
 		private void generateProj_Click(object sender, EventArgs e)
@@ -167,6 +178,7 @@ namespace ProjectGenerator_V2
 							pathBox.Text = fb.SelectedPath;
 						}
 					}
+					gitPush();
 					createFolders();
 					createAndWriteFiles();
 					openTerminalIn(folderPath);
@@ -186,6 +198,7 @@ namespace ProjectGenerator_V2
 			}
 			else
 			{
+				gitPush();
 				createFolders();
 				createAndWriteFiles();
 				if (openExpCB.Checked == true)
@@ -197,6 +210,7 @@ namespace ProjectGenerator_V2
 					openTerminalIn(folderPath);
 				}
 			}
+			reader.Close();
 		}
 		private void openFolderIn(string path)
 		{
@@ -251,6 +265,17 @@ namespace ProjectGenerator_V2
 				{
 					openExpCB.Checked = true;
 				}
+				if (Int64.Parse(obj["languages"][selectedLang]["pushToGit"]) == 0)
+				{
+					gitUrlBar.Enabled = false;
+					pushToGitCB.Checked = false;
+				}
+				if (Int64.Parse(obj["languages"][selectedLang]["pushToGit"]) == 1)
+				{
+					gitUrlBar.Enabled = true;
+					pushToGitCB.Checked = true;
+				}
+				reader.Close();
 			}
 			catch
 			{
@@ -259,6 +284,12 @@ namespace ProjectGenerator_V2
 		}
 		private void gitPush()
 		{
+			StreamWriter writer = new StreamWriter(folderPath + "/" + "autoPush.bat");
+			writer.WriteLine("git init");
+			writer.WriteLine("git add .");
+			writer.WriteLine("PAUSE");
+			writer.Flush();
+			writer.Close();
 		}
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
