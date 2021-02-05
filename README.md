@@ -18,7 +18,8 @@ Extract the compressed file and run the executable
 | Key          	| Value Type 	| What for                                                                                                             	|
 |--------------	|------------	|----------------------------------------------------------------------------------------------------------------------	|
 | languages    	| Array      	| Array of project templates                                                                                           	|
-| langName     	| String     	| Name of the template or programming language                                                                         	|
+| langName     	| String     	| Name of the template or programming language 
+| pushToGit     | int			| 1 = push to VSC after the template is generated 0 = do not push to VSC after the template is generate
 | OpenTerminal 	| int        	| 1 = open the terminal after the template is generated 0 = do not open the terminal after the template is generated   	|
 | OpenExplorer 	| int        	| 1 = open ther exploerer after the template is generated 0 = do not open the terminal after the template is generated 	|
 | folders      	| array      	| Arrays of folders to create                                                                                          	|

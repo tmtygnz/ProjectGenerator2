@@ -24,7 +24,8 @@ languages:
 
   -
     langName: "C++"
-    openTerminal: 0 # 1 = true, 0 = false
+    pushToGit: 1 # 1 = true, 0 = false
+    openTerminal: 1 # 1 = true, 0 = false
     openExplorer: 1 # 1 = true, 0 = false
     folders:
     - 
