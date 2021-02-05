@@ -121,6 +121,29 @@ namespace ProjectGenerator_V2
 		{
 			refreshDropDown();
 			langSelect.SelectedIndex = 0;
+			StreamReader reader = new StreamReader(configPath);
+			string genFileStr = reader.ReadToEnd();
+			var deserializer = new DeserializerBuilder().Build();
+			var obj = deserializer.Deserialize<dynamic>(genFileStr);
+			int selectedLang = langSelect.SelectedIndex;
+			if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 0)
+			{
+				
+				openCmdCB.Checked = false;
+			}
+			if (Int64.Parse(obj["languages"][selectedLang]["openTerminal"]) == 1)
+			{
+				openCmdCB.Checked = true;
+			}
+			if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 0)
+			{
+				openExpCB.Checked = false;
+			}
+			if (Int64.Parse(obj["languages"][selectedLang]["openExplorer"]) == 1)
+			{
+				openExpCB.Checked = true;
+			}
+			
 		}
 
 		private void generateProj_Click(object sender, EventArgs e)
@@ -234,7 +257,9 @@ namespace ProjectGenerator_V2
 				MessageBox.Show("Cant Update Dropdown");
 			}
 		}
-
+		private void gitPush()
+		{
+		}
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Version 1");
