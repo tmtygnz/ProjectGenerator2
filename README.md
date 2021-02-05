@@ -2,7 +2,7 @@
 This is a customizable project generator created using C#
 
 ## Installation
-Go to the releases page of this repository or click [here](https://github.com/jostimian/ProjectGenerator2/releases/tag/v1.0)
+Go to the releases page of this repository to download the latest build or click [here](https://github.com/jostimian/ProjectGenerator2/releases)
 
 ## Usage
 Extract the compressed file and run the executable
