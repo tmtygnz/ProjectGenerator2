@@ -10,7 +10,7 @@ Extract the compressed file and run the executable
 - Choose a programming language
 - Choose the file path where you want to generate the project
 - Click generate and start coding
-![Demo](./img/GenerateNewProjectDemo.gif =1280x720)
+![Demo](./img/GenerateNewProjectDemo.gif)
 
 ### Adding and Editing Templates
 - Open the config.yml in `file` -> `Edit Generator Preferences`
