@@ -21,23 +21,13 @@ languages:
       fileContent: | #file content
         """Pregenerated Python File"""
         print("Hello World")
-
-  -
-    langName: "C++"
-    pushToGit: 1 
-    openTerminal: 1 
-    openExplorer: 1
-    folders:
-    - 
-      folderName: "src"
-    - 
-      folderName: "bin"
     -
-      folderName: "lib"
+      filePath: "bin"
+      fileName: "README.md"
+      fileContent: | 
+        This folder should contain built binary
     -
-      folderName: "include"
-
-    files: 
-    -
-      filePath: "src"
-      fileName: "main.cpp"
+      filePath: "lib"
+      fileName: "README.md"
+      fileContent: | 
+        This folder should contain Application specific libraries.

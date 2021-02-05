@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamlDotNet.Serialization;
@@ -186,7 +187,6 @@ namespace ProjectGenerator_V2
 						}
 						createFolders();
 						createAndWriteFiles();
-						openTerminalIn(folderPath);
 						if (openExpCB.Checked == true)
 						{
 							openFolderIn(folderPath);
@@ -219,6 +219,7 @@ namespace ProjectGenerator_V2
 					}
 					if (pushToGitCB.Checked == true)
 					{
+						Thread.Sleep(2000);
 						gitPush();
 					}
 				}
@@ -297,15 +298,15 @@ namespace ProjectGenerator_V2
 		}
 		private void gitPush()
 		{
+			MessageBox.Show("Empty folders will not be added in your VCS provider if you add files inside that folder it will automaticaly show after you manualy push your project in your VCS provider");
 			StreamWriter writer = new StreamWriter(Application.StartupPath +"/push.bat");
 			writer.WriteLine("cd " + folderPath);
 			writer.WriteLine("git init");
-			writer.WriteLine("git add .");
+			writer.WriteLine("git add --all");
 			writer.WriteLine("git commit -m \"initial commit\"");
 			writer.WriteLine("git branch -M main");
 			writer.WriteLine("git remote add origin " + gitUrlBar.Text); ;
 			writer.WriteLine("git push -u origin main");
-			writer.WriteLine("PAUSE");
 			writer.Flush();
 			writer.Close();
 			System.Diagnostics.Process.Start(Application.StartupPath+"/push.bat");
