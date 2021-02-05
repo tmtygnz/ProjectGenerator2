@@ -166,22 +166,49 @@ namespace ProjectGenerator_V2
 			int selectedLang = langSelect.SelectedIndex;
 
 			folderPath = pathBox.Text;
-			if (folderPath == "")
+			if(pushToGitCB.Checked == true && gitUrlBar.Text == "")
 			{
-				try
+				MessageBox.Show("You need to add your git url");
+			}
+			else
+			{
+				if (folderPath == "")
 				{
-					using (FolderBrowserDialog fb = new FolderBrowserDialog())
+					try
 					{
-						DialogResult result = fb.ShowDialog();
-						if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fb.SelectedPath))
+						using (FolderBrowserDialog fb = new FolderBrowserDialog())
 						{
-							pathBox.Text = fb.SelectedPath;
+							DialogResult result = fb.ShowDialog();
+							if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fb.SelectedPath))
+							{
+								pathBox.Text = fb.SelectedPath;
+							}
+						}
+						createFolders();
+						createAndWriteFiles();
+						openTerminalIn(folderPath);
+						if (openExpCB.Checked == true)
+						{
+							openFolderIn(folderPath);
+						}
+						if (openCmdCB.Checked == true)
+						{
+							openTerminalIn(folderPath);
+						}
+						if (pushToGitCB.Checked == true)
+						{
+							gitPush();
 						}
 					}
-					gitPush();
+					catch
+					{
+						MessageBox.Show("No Folder Selected");
+					}
+				}
+				else
+				{
 					createFolders();
 					createAndWriteFiles();
-					openTerminalIn(folderPath);
 					if (openExpCB.Checked == true)
 					{
 						openFolderIn(folderPath);
@@ -190,26 +217,13 @@ namespace ProjectGenerator_V2
 					{
 						openTerminalIn(folderPath);
 					}
-				}
-				catch (Exception err)
-				{
-					MessageBox.Show("No Folder Selected");
-				}
-			}
-			else
-			{
-				gitPush();
-				createFolders();
-				createAndWriteFiles();
-				if (openExpCB.Checked == true)
-				{
-					openFolderIn(folderPath);
-				}
-				if (openCmdCB.Checked == true)
-				{
-					openTerminalIn(folderPath);
+					if (pushToGitCB.Checked == true)
+					{
+						gitPush();
+					}
 				}
 			}
+			
 			reader.Close();
 		}
 		private void openFolderIn(string path)
@@ -227,7 +241,6 @@ namespace ProjectGenerator_V2
 		{
 			try
 			{
-				const string strCmdText = "/C ipconfig&ipconfig";
 				Process proc = new Process();
 				ProcessStartInfo startInfo = new ProcessStartInfo();
 				startInfo.WorkingDirectory = path;
@@ -284,12 +297,18 @@ namespace ProjectGenerator_V2
 		}
 		private void gitPush()
 		{
-			StreamWriter writer = new StreamWriter(folderPath + "/" + "autoPush.bat");
+			StreamWriter writer = new StreamWriter(Application.StartupPath +"/push.bat");
+			writer.WriteLine("cd " + folderPath);
 			writer.WriteLine("git init");
 			writer.WriteLine("git add .");
+			writer.WriteLine("git commit -m \"initial commit\"");
+			writer.WriteLine("git branch -M main");
+			writer.WriteLine("git remote add origin " + gitUrlBar.Text); ;
+			writer.WriteLine("git push -u origin main");
 			writer.WriteLine("PAUSE");
 			writer.Flush();
 			writer.Close();
+			System.Diagnostics.Process.Start(Application.StartupPath+"/push.bat");
 		}
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
