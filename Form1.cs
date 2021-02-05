@@ -313,7 +313,7 @@ namespace ProjectGenerator_V2
 		}
 		private void versionToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("Version 1");
+			MessageBox.Show("Version 2");
 		}
 
 		private void generatorPreferencesToolStripMenuItem_Click(object sender, EventArgs e)
