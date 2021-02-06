@@ -237,7 +237,7 @@ namespace ProjectGenerator_V2
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.pushToGitCB.AutoSize = true;
 			this.pushToGitCB.ForeColor = System.Drawing.Color.White;
-			this.pushToGitCB.Location = new System.Drawing.Point(12, 211);
+			this.pushToGitCB.Location = new System.Drawing.Point(14, 211);
 			this.pushToGitCB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.pushToGitCB.Name = "pushToGitCB";
 			this.pushToGitCB.Size = new System.Drawing.Size(92, 21);
