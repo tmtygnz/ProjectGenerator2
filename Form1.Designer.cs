@@ -244,6 +244,7 @@ namespace ProjectGenerator_V2
 			this.pushToGitCB.TabIndex = 9;
 			this.pushToGitCB.Text = "Push To Git";
 			this.pushToGitCB.UseVisualStyleBackColor = true;
+			this.pushToGitCB.CheckedChanged += new System.EventHandler(this.pushToGitCB_CheckedChanged);
 			// 
 			// gitUrlBar
 			// 

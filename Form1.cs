@@ -332,5 +332,17 @@ namespace ProjectGenerator_V2
 		{
 			Application.Exit();
 		}
+
+		private void pushToGitCB_CheckedChanged(object sender, EventArgs e)
+		{
+			if(pushToGitCB.Checked == true)
+			{
+				gitUrlBar.Enabled = true;
+			}
+			if (pushToGitCB.Checked == false)
+			{
+				gitUrlBar.Enabled = false;
+			}
+		}
 	}
 }
